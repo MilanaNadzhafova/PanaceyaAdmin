@@ -1,0 +1,42 @@
+﻿@model Panaceya.Models.Pharmacies
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Информация</h2>
+
+<div>
+ 
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+           Название аптеки
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Name)
+        </dd>
+
+        <dt>
+            Адрес
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Address)
+        </dd>
+
+        <dt>
+            Время работы
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Time_Work)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Изменить", "Edit", new { id = Model.ID_Pharm }) |
+    @Html.ActionLink("Назад", "Index")
+</p>

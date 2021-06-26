@@ -1,0 +1,68 @@
+﻿@model Panaceya.Models.Orders
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Информация о заказе</h2>
+
+<div>
+
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            Номер корзины
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Baskets.ID_Basket)
+        </dd>
+
+        <dt>
+            Метод оплаты
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Pay_Method.Method)
+        </dd>
+
+        <dt>
+            Точка выдачи
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Pharmacies.Name)
+        </dd>
+
+        <dt>
+            Статус заказа
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Status.Status1)
+        </dd>
+
+    </dl>
+    @*<div id="MedInBasket"></div>*@
+    <h4 style="text-align:center">Товары, входящие в заказ:</h4>
+    <div>@Html.Action("MedInBasket", new { id = Model.ID_Order }) </div>
+</div>
+<p>
+    @Html.ActionLink("Изменить статус закза", "Edit", new { id = Model.ID_Order }) |
+    @Html.ActionLink("Назад", "Index")
+</p>
+
+@*@section scripts{
+    <script type="text/javascript">
+    $(function () {
+            var id = @Html.DisplayFor(model => model.Baskets.ID_Basket)
+            $.ajax({
+                type: 'GET',
+                url: '@Url.Action("MedInBasket")/' + id,
+                success: function (data) {
+                    $('#MedInBasket').replaceWith(data);
+                }
+            });
+    })
+    </script>
+    }*@

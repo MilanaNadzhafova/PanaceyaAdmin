@@ -1,0 +1,50 @@
+﻿@model IEnumerable<Panaceya.Models.Basket_Consist>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+
+
+@Styles.Render("~/Content/css")
+
+<table class="table">
+    <tr>
+      
+        <th>
+            Категория
+        </th>
+        <th>
+            Название товара
+        </th>
+        <th>
+           Цена
+        </th>
+        <th>
+            Количество
+        </th>
+    </tr>
+    @if (Model != null)
+    {
+        foreach (var item in Model)
+        {
+            <tr>
+              
+                <td>
+                    @Html.DisplayFor(modelItem => item.Medicines.Categories.Name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Medicines.Name)
+                </td>
+           
+                <td>
+                    @Html.DisplayFor(modelItem => item.Medicines.Price)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Medicines.Amount)
+                </td>
+            </tr>
+        }
+    }
+
+</table>

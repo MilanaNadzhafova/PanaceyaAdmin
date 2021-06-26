@@ -1,0 +1,50 @@
+﻿@model IEnumerable<Panaceya.Models.Orders>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Заказы</h2>
+
+@*<p>
+    @Html.ActionLink("Create New", "Create")
+</p>*@
+<table class="table">
+    <tr>
+        <th>
+            Номер корзины
+        </th>
+        <th>
+            Способ оплаты
+        </th>
+        <th>
+            Точка выдачи заказа
+        </th>
+        <th>
+            Статус заказа
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Baskets.ID_Basket)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Pay_Method.Method)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Pharmacies.Name)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Status.Status1)
+        </td>
+        <td>
+            @Html.ActionLink("Изменить статус заказа", "Edit", new { id=item.ID_Order }) |
+            @Html.ActionLink("Информация о заказе", "Details", new { id=item.ID_Order }) |
+        </td>
+    </tr>
+}
+
+</table>

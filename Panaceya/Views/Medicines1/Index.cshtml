@@ -1,0 +1,76 @@
+﻿@model IEnumerable<Panaceya.Models.Medicines>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+
+
+<h2>Лекарства</h2>
+
+@*<p>
+        @Html.ActionLink("Добавить", "Create")
+    </p>*@
+
+<table class="table">
+    <tr class="paragraph">
+        <th>
+            Название
+        </th>
+        @*<th>
+            Описание
+        </th>*@
+        <th>
+            Цена
+        </th>
+        <th >
+            Количество
+        </th>
+        <th>
+            Наличие
+        </th>
+        <th>
+            Категория
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Name)
+            </td>
+            @*<td>
+                @Html.DisplayFor(modelItem => item.Description)
+            </td>*@
+            <td>
+                @Html.DisplayFor(modelItem => item.Price)
+            </td>
+            <td class="center">
+                @Html.DisplayFor(modelItem => item.Amount)
+            </td>
+            <td>
+                @*@Html.DisplayFor(modelItem => item.Presence)*@
+                @if (item.Presence == true)
+                {
+                    <p> В наличии</p>
+                }
+                else
+                {
+                    <p>Не наличии</p>
+                }
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Categories.Name)
+            </td>
+            <td>
+                @Html.ActionLink("Редактировать", "Edit", new { id = item.ID_Medicine }, new { @class = "lox" }) |
+                @Html.ActionLink("Информация", "Details", new { id = item.ID_Medicine }) |
+                @Html.ActionLink("Удалить", "Delete", new { id = item.ID_Medicine })
+            </td>
+        </tr>
+    }
+
+</table>
+<button class="go" onclick="location.href = '/Medicines1/Create';">Добавить товар &raquo;</button>

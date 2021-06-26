@@ -1,0 +1,74 @@
+﻿@model Panaceya.Models.Medicines
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Информация</h2>
+
+<div>
+
+    <hr />
+    <dl class="dl-horizontal">
+        <dt class="paragraph">
+            Название
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Name)
+        </dd>
+
+        <dt class="paragraph">
+            Описание
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Description)
+        </dd>
+
+        <dt class="paragraph">
+            Цена
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Price)
+        </dd>
+
+        <dt class="paragraph">
+            Количество
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Amount)
+        </dd>
+
+        <dt class="paragraph">
+            Наличие
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Presence)
+        </dd>
+
+        <dt class="paragraph">
+            Категория
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Categories.Name)
+        </dd>
+
+        <dt class="paragraph">
+            Изображение
+        </dt>
+
+        <dd>
+            <img src="~/Content/Images/@Html.DisplayFor(model => model.Photo)" />
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Изменить", "Edit", new { id = Model.ID_Medicine }) |
+    @Html.ActionLink("Назад", "Index")
+</p>
